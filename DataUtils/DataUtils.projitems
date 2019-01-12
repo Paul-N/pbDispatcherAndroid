@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{F0A33BE6-6DF6-48DE-8558-39B30DE40B07}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>DataUtils</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DataUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Client.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Alarm.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Check.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Counter.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Flash.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Freezer.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Home.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Pause.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Refrigerator.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Thermometer.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Waterdrop.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon1024.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon120.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon152.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon167.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon180.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon20.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon29.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon40.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon58.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon60.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon76.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon80.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIcon87.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Icons\GearIconAlfa.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Mixer.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Rotate.png" />
+  </ItemGroup>
+</Project>

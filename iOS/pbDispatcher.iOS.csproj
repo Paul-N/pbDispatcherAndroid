@@ -1,0 +1,372 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{8A7054CA-6004-4710-96DC-DAB4CF4760E5}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>pbDispatcher.iOS</RootNamespace>
+    <AssemblyName>HomeMonitor.iOS</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Rustem Avkhadiev (Z2Z3HLJ97L)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchFastDev>true</MtouchFastDev>
+    <IOSDebuggerPort>57833</IOSDebuggerPort>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>pbDispatcher-Dev</CodesignProvision>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution: Rustem Avkhadiev (3V97HJW582)</CodesignKey>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <PlatformTarget>anycpu</PlatformTarget>
+    <MtouchI18n>other,west</MtouchI18n>
+    <CodesignProvision>pbDispatcher-Distr</CodesignProvision>
+<AssemblyName>pbDispatcher.iOS</AssemblyName>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Rustem Avkhadiev (Z2Z3HLJ97L)</CodesignKey>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>VS: com.sphinxgames.pbdispatcher Development</CodesignProvision>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Rustem Avkhadiev (Z2Z3HLJ97L)</CodesignKey>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchFastDev>false</MtouchFastDev>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <PlatformTarget>x86</PlatformTarget>
+    <MtouchI18n>other,west</MtouchI18n>
+    <CodesignProvision>pdDispatcherDev-Dev</CodesignProvision>
+<AssemblyName>pbDispatcher.iOS</AssemblyName>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\home57.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\home114.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\HomeIcon 1242x2208.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\HomeIcon 750x1334.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\HomeIcon 640x960.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\HomeIcon 640x1136.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\HomeIcon 1536x2048.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\home50.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\home100.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\home72.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\home144.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\GearIcon1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="HistoryGraphView.cs" />
+    <Compile Include="HistoryGraphView.designer.cs">
+      <DependentUpon>HistoryGraphView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CamController.cs" />
+    <Compile Include="CamController.designer.cs">
+      <DependentUpon>CamController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyNavigationController.cs" />
+    <Compile Include="MyNavigationController.designer.cs">
+      <DependentUpon>MyNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSettingsController.cs" />
+    <Compile Include="UserSettingsController.designer.cs">
+      <DependentUpon>UserSettingsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UITextFieldWithKey.cs" />
+    <Compile Include="UITextFieldWithKey.designer.cs">
+      <DependentUpon>UITextFieldWithKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineTableCell.cs" />
+    <Compile Include="MachineTableCell.designer.cs">
+      <DependentUpon>MachineTableCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachinesController.cs" />
+    <Compile Include="MachinesController.designer.cs">
+      <DependentUpon>MachinesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FiltersListController.cs" />
+    <Compile Include="FiltersListController.designer.cs">
+      <DependentUpon>FiltersListController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilterTableCell.cs" />
+    <Compile Include="FilterTableCell.designer.cs">
+      <DependentUpon>FilterTableCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilterController.cs" />
+    <Compile Include="FilterController.designer.cs">
+      <DependentUpon>FilterController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineDetailsController.cs" />
+    <Compile Include="MachineDetailsController.designer.cs">
+      <DependentUpon>MachineDetailsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineStatesLogTableCell.cs" />
+    <Compile Include="MachineStatesLogTableCell.designer.cs">
+      <DependentUpon>MachineStatesLogTableCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceController.cs" />
+    <Compile Include="ServiceController.designer.cs">
+      <DependentUpon>ServiceController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SensorSettingsController.cs" />
+    <Compile Include="SensorSettingsController.designer.cs">
+      <DependentUpon>SensorSettingsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CountersController.cs" />
+    <Compile Include="CountersController.designer.cs">
+      <DependentUpon>CountersController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoController.cs" />
+    <Compile Include="PhotoController.designer.cs">
+      <DependentUpon>PhotoController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPhotoController.cs" />
+    <Compile Include="AddPhotoController.designer.cs">
+      <DependentUpon>AddPhotoController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AVCamPreviewView.cs" />
+    <Compile Include="AVCamPreviewView.designer.cs">
+      <DependentUpon>AVCamPreviewView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachinePhotosCollectionCell.cs" />
+    <Compile Include="MachinePhotosCollectionCell.designer.cs">
+      <DependentUpon>MachinePhotosCollectionCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoOneController.cs" />
+    <Compile Include="PhotoOneController.designer.cs">
+      <DependentUpon>PhotoOneController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AvailableSensorsTableCell.cs" />
+    <Compile Include="AvailableSensorsTableCell.designer.cs">
+      <DependentUpon>AvailableSensorsTableCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineSensorsController.cs" />
+    <Compile Include="MachineSensorsController.designer.cs">
+      <DependentUpon>MachineSensorsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttachedSensorsTableCell.cs" />
+    <Compile Include="AttachedSensorsTableCell.designer.cs">
+      <DependentUpon>AttachedSensorsTableCell.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\.DS_Store">
+      <Link>Resources\.DS_Store</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Alarm.png">
+      <Link>Resources\Alarm.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Check.png">
+      <Link>Resources\Check.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Counter.png">
+      <Link>Resources\Counter.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Flash.png">
+      <Link>Resources\Flash.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Freezer.png">
+      <Link>Resources\Freezer.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Home.png">
+      <Link>Resources\Home.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Pause.png">
+      <Link>Resources\Pause.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Refrigerator.png">
+      <Link>Resources\Refrigerator.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Thermometer.png">
+      <Link>Resources\Thermometer.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Waterdrop.png">
+      <Link>Resources\Waterdrop.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon.png">
+      <Link>Resources\Icons\GearIcon.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon1024.png">
+      <Link>Resources\Icons\GearIcon1024.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon120.png">
+      <Link>Resources\Icons\GearIcon120.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon152.png">
+      <Link>Resources\Icons\GearIcon152.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon167.png">
+      <Link>Resources\Icons\GearIcon167.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon180.png">
+      <Link>Resources\Icons\GearIcon180.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon20.png">
+      <Link>Resources\Icons\GearIcon20.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon29.png">
+      <Link>Resources\Icons\GearIcon29.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon40.png">
+      <Link>Resources\Icons\GearIcon40.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon58.png">
+      <Link>Resources\Icons\GearIcon58.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon60.png">
+      <Link>Resources\Icons\GearIcon60.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon76.png">
+      <Link>Resources\Icons\GearIcon76.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon80.png">
+      <Link>Resources\Icons\GearIcon80.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon87.png">
+      <Link>Resources\Icons\GearIcon87.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIconAlfa.png">
+      <Link>Resources\Icons\GearIconAlfa.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Mixer.png">
+      <Link>Resources\Mixer.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Rotate.png">
+      <Link>Resources\Rotate.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Sifter.png">
+      <Link>Resources\Sifter.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Vibro.png">
+      <Link>Resources\Vibro.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Oven.png">
+      <Link>Resources\Oven.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\ProofingChamber.png">
+      <Link>Resources\ProofingChamber.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Trash.png">
+      <Link>Resources\Trash.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\CheckOrange.png">
+      <Link>Resources\CheckOrange.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Cross.png">
+      <Link>Resources\Cross.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Lock.png">
+      <Link>Resources\Lock.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Service.png">
+      <Link>Resources\Service.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\SandWatch.png">
+      <Link>Resources\SandWatch.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\GreenCircle.png">
+      <Link>Resources\GreenCircle.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\GreyCircle.png">
+      <Link>Resources\GreyCircle.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\RedCircle.png">
+      <Link>Resources\RedCircle.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\YelowCircle.png">
+      <Link>Resources\YelowCircle.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\AlertGear.png">
+      <Link>Resources\AlertGear.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Cam.png">
+      <Link>Resources\Cam.png</Link>
+    </BundleResource>
+  </ItemGroup>
+  <Import Project="..\..\DataUtils\DataUtils\DataUtils.projitems" Label="Shared" Condition="Exists('..\..\DataUtils\DataUtils\DataUtils.projitems')" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

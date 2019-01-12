@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="app_name">Диспетчер</string>
+  <string name="settings">Настройки</string>
+  <string name="setting">Настройка</string>
+  <string name="back">Назад</string>
+  <string name="all">Все</string>
+  <string name="filters">Фильтры:</string>
+  <string name="city">Город</string>
+  <string name="unit">Подразделение</string>
+  <string name="facility_type">Тип оборудования</string>
+  <string name="facility_type_settings">Тип обору дования</string>
+  <string name="facility_service">Сервис оборудования</string>
+  <string name="work_state">Рабочее состояние</string>
+  <string name="service_state">Сервисное состояние</string>
+  <string name="no_authorization">Нет авторизации</string>
+  <string name="no_connection">Нет связи</string>
+  <string name="user">Пользователь:</string>
+  <string name="user_title">Пользователь</string>
+  <string name="updating" tools:ignore="TypographyEllipsis">Обновление...</string>
+  <string name="loading" tools:ignore="TypographyEllipsis">Загрузка...</string>
+  <string name="hourglass">&#x231B;</string>
+
+  <string name="sensor_alerts">Тревоги датчика</string>
+  <string name="tolerance_from">Допуск от:</string>
+  <string name="to">до:</string>
+
+  <string name="save">Сохранить</string>
+  <string name="cancel">Отмена</string>
+  <string name="alert_if_tolerance_break_up">Тревога при нарушении допуска более чем на:</string>
+
+  <string name="hour">час.</string>
+  <string name="min">мин.</string>
+  <string name="sec">сек.</string>  
+
+  <string name="request_text">Текст запроса:</string>
+  <string name="service_intend">Сервисный инцидент</string>
+
+  <string name="take_for_repair">Принять на ремонт</string>
+  <string name="refuse_to_repair">Отказать в ремонте</string>
+
+  <string name="string_empty"></string>  
+  <string name="only_my">Только мои</string>  
+  <string name="title_home">Home</string>
+  <string name="title_dashboard">Dashboard</string>
+  <string name="title_notifications">Notifications</string>
+</resources>

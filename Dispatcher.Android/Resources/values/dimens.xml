@@ -1,0 +1,7 @@
+<resources>
+  <dimen name="setting_item_margin">30dp</dimen>
+  <dimen name="setting_name_width">95dp</dimen>
+  <dimen name="setting_item_font">18sp</dimen>
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+  <dimen name="activity_vertical_margin">16dp</dimen>
+</resources>
