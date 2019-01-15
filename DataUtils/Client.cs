@@ -67,6 +67,7 @@ namespace DataUtils
         static public string userName;
         static public string login = null;
         static public string password = null;
+        static public string deviceName;
 
         public delegate void PacketProcessFunction(ByteBuffer buffer);
         public delegate void RequestParseCallback(ByteBuffer buffer, RequestViewCallback requestViewCallback);
@@ -119,7 +120,7 @@ namespace DataUtils
                 Thread.Sleep(1000);
             }
 
-            Client.Log("Init client Token = '" + userToken + "'");
+            //Client.Log("Init client Token = '" + userToken + "'");
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -216,9 +217,9 @@ namespace DataUtils
                 IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, port);
 
                 socket = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                Console.WriteLine("socket.ReceiveBufferSize " + socket.ReceiveBufferSize);
+                //Console.WriteLine("socket.ReceiveBufferSize " + socket.ReceiveBufferSize);
                 socket.ReceiveBufferSize = 3 * 1024 * 1024;
-                Console.WriteLine("socket.ReceiveBufferSize 2 " + socket.ReceiveBufferSize);
+                //Console.WriteLine("socket.ReceiveBufferSize 2 " + socket.ReceiveBufferSize);
 
                 SocketAsyncEventArgs socketEventArg = new SocketAsyncEventArgs();
                 socketEventArg.RemoteEndPoint = ipEndPoint;
@@ -437,7 +438,7 @@ namespace DataUtils
             if (Settings.serverVersion != serverVersion)
                 Client.Log("Версии клиента и сервера различаются " + serverVersion + " - " + Settings.serverVersion + ". Обновите клиент", LogTypes.Error);
 
-            Client.Log("Auth success. Server version: " + serverVersion);
+            Client.Log("Auth success. Server version: " + serverVersion + ", device: " + deviceName);
         }
 
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------

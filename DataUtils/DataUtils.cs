@@ -410,6 +410,7 @@ namespace DataUtils
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public struct Message
     {
+        public ulong ID;
         public uint subjectID;
         public string description;
         public DateTime time;
@@ -417,17 +418,16 @@ namespace DataUtils
         public int recepientID;
         public string senderName;
         public string recepientName;
+    }
 
-        public Message(uint subjectID, string description, DateTime time, int senderID, int recepientID, string senderName, string recepientName)
-        {
-            this.subjectID = subjectID;
-            this.description = description;
-            this.time = time;
-            this.senderID = senderID;
-            this.recepientID = recepientID;
-            this.senderName = senderName;
-            this.recepientName = recepientName;
-        }
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    public class MachinePhoto
+    {
+        public uint photoID;
+        public DateTime time;
+        public string authorName;
+        public string comment;
+        public ByteBuffer imageData;
     }
 
 
@@ -787,6 +787,14 @@ namespace DataUtils
         GetCams                = 33,
         GetCamImage            = 34,
         SendCamQuery           = 35,
+        AddMachinePhoto        = 36,
+        GetMachinePhotosList   = 37,
+        GetMachinePhoto        = 38,
+        DeleteMachinePhoto     = 39,
+        GetAvailableSensors    = 40,
+        AttachSensor           = 41,
+        DetachSensor           = 42,
+        AckMessage             = 43,
 
         Count
     }
@@ -996,6 +1004,18 @@ namespace DataUtils
         InitialChannelsState = 19,
         SensorDataMode = 20,
         ADCBorders = 21
+    }
+
+    public enum RebootReasons : byte
+    {
+        PWR_ON,  
+        PIN_RESET,              
+        VDDS_LOSS,              
+        VDDR_LOSS,             
+        CLK_LOSS,               
+        SYSRESET,              
+        WARMRESET,              
+        WAKEUP_FROM_SHUTDOWN 
     }
 
     public class ProbeName
@@ -2087,7 +2107,7 @@ namespace DataUtils
                         break;
 
                     case NodePacketTypes.RebootReport:
-                        description += ", version: " + GetUShort() + ", reboot reason: " + GetByte() + ", temp: " + GetSByte();
+                        description += ", version: " + GetUShort() + ", reboot reason: " + (RebootReasons) GetByte() + ", temp: " + GetSByte();
                         byte battRaw = GetByte();
                         float batt = 2;
 
@@ -2288,7 +2308,7 @@ namespace DataUtils
                         break;
 
                     case NodePacketTypes.HallRotateContinue:
-                        description += ", rmp: " + GetUShort();
+                        description += ", rpm: " + GetUShort();
                         break;
 
                     case NodePacketTypes.HallRotateFinish:

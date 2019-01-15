@@ -19,5 +19,7 @@ namespace DataUtils
         public const ushort sensorHistoryPointsCount = 100;
 
         public const int adminUserID = 3;
+        public const int systemUserID    = 1;
+        public const int systemSubjectID = 1;
     }
 }

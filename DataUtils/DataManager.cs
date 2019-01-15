@@ -90,6 +90,7 @@ namespace DataUtils
 
                 if (requestsQueue.Count != 0)
                 {
+                    //Client.Log("requestsQueue.Count: " + requestsQueue.Count);
                     SendRequest(requestsQueue[0]);
                     requestsQueue.RemoveAt(0);
 
@@ -122,7 +123,7 @@ namespace DataUtils
         static public int NotAnsweredRequestsCount 
         {
             get
-            { return Client.NotAnsweredRequestsCount; }
+            { return Client.NotAnsweredRequestsCount + requestsQueue.Count; }
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -130,6 +131,15 @@ namespace DataUtils
         {
             get
             { return Client.connectState; }
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public string DeviceName
+        {
+            get
+            { return Client.deviceName; }
+            set
+            { Client.deviceName = value; }
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -523,10 +533,11 @@ namespace DataUtils
         //Если Message.senderID == DataManager.userSettings.userID, то пользователь - отправитель данного сообщение, иначе - получатель
         //Пример: DataManager.SheduleGetMessagesRequest(0, DataUpdateCallback);
         //Пример 2: DataManager.SheduleGetMessagesRequest(selectedSubjectID, DataUpdateCallback);
-        static public void SheduleGetMessagesRequest(uint subjectID, Client.RequestViewCallback requestViewCallback)
+        static public void SheduleGetMessagesRequest(uint subjectID, bool unreadOnly, Client.RequestViewCallback requestViewCallback)
         {
             ByteBuffer requestBuffer = new ByteBuffer();
             requestBuffer.Add((uint)subjectID);
+            requestBuffer.Add((bool)unreadOnly);
 
             requestsQueue.Add(new Request(RequestTypes.GetMessages, requestBuffer, ParseGetMessages, requestViewCallback));
 
@@ -548,6 +559,17 @@ namespace DataUtils
             requestBuffer.AddLongString(text);
 
             requestsQueue.Add(new Request(RequestTypes.SendMessage, requestBuffer, ParseEmptyRequestAnswer, requestViewCallback));
+
+            UpdateNow();
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public void SheduleAckMessageRequest(ulong messageID, Client.RequestViewCallback requestViewCallback)
+        {
+            ByteBuffer requestBuffer = new ByteBuffer();
+            requestBuffer.Add((ulong)messageID);
+
+            requestsQueue.Add(new Request(RequestTypes.AckMessage, requestBuffer, ParseEmptyRequestAnswer, requestViewCallback));
 
             UpdateNow();
         }
@@ -603,6 +625,88 @@ namespace DataUtils
             UpdateNow();
         }
 
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public void SheduleAddMachinePhotoRequest(uint machineID, byte[] photoData, Client.RequestViewCallback requestViewCallback)
+        {
+            ByteBuffer requestBuffer = new ByteBuffer();
+            requestBuffer.Add((uint)machineID);
+            requestBuffer.Add((uint)photoData.Length);
+            requestBuffer.AddBytes(photoData);
+
+            requestsQueue.Add(new Request(RequestTypes.AddMachinePhoto, requestBuffer, ParseEmptyRequestAnswer, requestViewCallback));
+
+            UpdateNow();
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public void SheduleGetMachinePhotosListRequest(uint machineID, Client.RequestViewCallback requestViewCallback)
+        {
+            ByteBuffer requestBuffer = new ByteBuffer();
+            requestBuffer.Add((uint)machineID);
+
+            requestsQueue.Add(new Request(RequestTypes.GetMachinePhotosList, requestBuffer, ParseGetMachinePhotosList, requestViewCallback));
+
+            UpdateNow();
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public void SheduleGetMachinePhotoRequest(uint machineID, uint photoID, Client.RequestViewCallback requestViewCallback)
+        {
+            ByteBuffer requestBuffer = new ByteBuffer();
+            requestBuffer.Add((uint)machineID);
+            requestBuffer.Add((uint)photoID);
+
+            requestsQueue.Add(new Request(RequestTypes.GetMachinePhoto, requestBuffer, ParseGetMachinePhoto, requestViewCallback));
+
+            UpdateNow();
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public void SheduleDeleteMachinePhotoRequest(uint machineID, uint photoID, Client.RequestViewCallback requestViewCallback)
+        {
+            ByteBuffer requestBuffer = new ByteBuffer();
+            requestBuffer.Add((uint)machineID);
+            requestBuffer.Add((uint)photoID);
+
+            requestsQueue.Add(new Request(RequestTypes.DeleteMachinePhoto, requestBuffer, ParseEmptyRequestAnswer, requestViewCallback));
+
+            UpdateNow();
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public void SheduleGetAvailableSensorsRequest(ushort divisionID, Client.RequestViewCallback requestViewCallback)
+        {
+            ByteBuffer requestBuffer = new ByteBuffer();
+            requestBuffer.Add((ushort)divisionID);
+
+            requestsQueue.Add(new Request(RequestTypes.GetAvailableSensors, requestBuffer, ParseGetAvailableSensors, requestViewCallback));
+
+            UpdateNow();
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public void SheduleAttachSensorRequest(uint machineID, uint sensorID, Client.RequestViewCallback requestViewCallback)
+        {
+            ByteBuffer requestBuffer = new ByteBuffer();
+            requestBuffer.Add((uint)machineID);
+            requestBuffer.Add((uint)sensorID);
+
+            requestsQueue.Add(new Request(RequestTypes.AttachSensor, requestBuffer, ParseEmptyRequestAnswer, requestViewCallback));
+
+            UpdateNow();
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        static public void SheduleDetachSensorRequest(uint machineID, uint sensorID, Client.RequestViewCallback requestViewCallback)
+        {
+            ByteBuffer requestBuffer = new ByteBuffer();
+            requestBuffer.Add((uint)machineID);
+            requestBuffer.Add((uint)sensorID);
+
+            requestsQueue.Add(new Request(RequestTypes.DetachSensor, requestBuffer, ParseEmptyRequestAnswer, requestViewCallback));
+
+            UpdateNow();
+        }
 
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         static public void ChangeUser(string login, string password, Client.RequestViewCallback requestViewCallback)
@@ -627,7 +731,7 @@ namespace DataUtils
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         static public string ServerName
         {
-            get {return Client.servers[Client.currentServerNum].dnsName;}
+            get {return Client.currentServerNum + "." + Client.servers[Client.currentServerNum].dnsName;}
         }
 
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1395,7 +1499,17 @@ namespace DataUtils
 
             for (int s = 0; s < count; s++)
             {
-                messages.Add(new Message(buffer.GetUInt(), buffer.GetLongString(), buffer.GetTime().ToLocalTime(), buffer.GetInt(), buffer.GetInt(), buffer.GetShortString(), buffer.GetShortString()));
+                Message message = new Message();
+                message.ID = buffer.GetULong();
+                message.subjectID = buffer.GetUInt();
+                message.description = buffer.GetLongString();
+                message.time = buffer.GetTime().ToLocalTime();
+                message.senderID = buffer.GetInt();
+                message.recepientID = buffer.GetInt();
+                message.senderName = buffer.GetShortString();
+                message.recepientName = buffer.GetShortString();
+
+                messages.Add(message);
             }
 
             requestViewCallback?.Invoke(messages);
@@ -1476,5 +1590,116 @@ namespace DataUtils
 
             requestViewCallback?.Invoke(camImage);
         }
-	}
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static void ParseGetMachinePhotosList(ByteBuffer buffer, Client.RequestViewCallback requestViewCallback)
+        {
+            RequestTypes requestType = (RequestTypes)buffer.GetByte();
+            if (requestType != RequestTypes.GetMachinePhotosList)
+            {
+                if (requestType == RequestTypes.Error)
+                    Client.Log(buffer.GetLongString());
+                else
+                {
+                    Client.LogErr();
+                }
+
+                requestViewCallback?.Invoke(RequestStates.Failed);
+                return;
+            }
+
+            List<MachinePhoto> machinePhotos = new List<MachinePhoto>();
+
+            ushort count = buffer.GetUShort();
+
+            for (int s = 0; s < count; s++)
+            {
+                MachinePhoto machinePhoto = new MachinePhoto();
+
+                machinePhoto.photoID = buffer.GetUInt();
+                machinePhoto.time = buffer.GetTime().ToLocalTime();
+                machinePhoto.authorName = buffer.GetShortString();
+                machinePhoto.comment = buffer.GetShortString();
+
+                machinePhotos.Add(machinePhoto);
+            }
+
+            requestViewCallback?.Invoke(machinePhotos);
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static void ParseGetMachinePhoto(ByteBuffer buffer, Client.RequestViewCallback requestViewCallback)
+        {
+            RequestTypes requestType = (RequestTypes)buffer.GetByte();
+            if (requestType != RequestTypes.GetMachinePhoto)
+            {
+                if (requestType == RequestTypes.Error)
+                    Client.Log(buffer.GetLongString());
+                else
+                {
+                    Client.LogErr();
+                }
+
+                requestViewCallback?.Invoke(RequestStates.Failed);
+                return;
+            }
+
+            MachinePhoto machinePhoto = new MachinePhoto();
+            machinePhoto.imageData = new ByteBuffer();
+
+            ushort count = buffer.GetUShort();
+
+            if (count != 0)
+            {
+                machinePhoto.photoID = buffer.GetUInt();
+                int len = buffer.GetInt();
+                machinePhoto.imageData.AddBytes(buffer.GetBytes(len), 0, len);
+
+            }
+
+            requestViewCallback?.Invoke(machinePhoto);
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static void ParseGetAvailableSensors(ByteBuffer buffer, Client.RequestViewCallback requestViewCallback)
+        {
+            RequestTypes requestType = (RequestTypes)buffer.GetByte();
+            if (requestType != RequestTypes.GetAvailableSensors)
+            {
+                if (requestType == RequestTypes.Error)
+                    Client.Log(buffer.GetLongString());
+                else
+                {
+                    Client.LogErr();
+                }
+
+                requestViewCallback?.Invoke(RequestStates.Failed);
+                return;
+            }
+
+            List<Sensor> sensors = new List<Sensor>();
+
+            ushort count = buffer.GetUShort();
+
+            for (int s = 0; s < count; s++)
+            {
+                Sensor sensor = new Sensor();
+                sensor.ID = buffer.GetUInt();
+                sensorTypes.TryGetValue(buffer.GetUShort(), out sensor.type);
+                if (sensor.type == null)
+                    sensor.type = new SensorType();
+                sensor.mainValue = buffer.GetDouble();
+                sensor.additionalValue = buffer.GetDouble();
+                sensor.lastTime = buffer.GetTime().ToLocalTime();
+                sensor.nodeID = buffer.GetUInt3();
+                sensor.rssi = buffer.GetSByte();
+                sensor.battery = buffer.GetByte();
+                sensor.chipTemperature = buffer.GetSByte();
+
+                sensors.Add(sensor);
+            }
+
+            requestViewCallback?.Invoke(sensors);
+        }
+    }
 }

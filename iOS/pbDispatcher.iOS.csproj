@@ -17,7 +17,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer: Rustem Avkhadiev (Z2Z3HLJ97L)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
     <IOSDebuggerPort>57833</IOSDebuggerPort>
@@ -26,7 +26,6 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>pbDispatcher-Dev</CodesignProvision>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -72,7 +71,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer: Rustem Avkhadiev (Z2Z3HLJ97L)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>false</MtouchFastDev>
@@ -84,7 +83,6 @@
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
     <MtouchI18n>other,west</MtouchI18n>
-    <CodesignProvision>pdDispatcherDev-Dev</CodesignProvision>
 <AssemblyName>pbDispatcher.iOS</AssemblyName>
 <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -234,139 +232,136 @@
     <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\.DS_Store">
-      <Link>Resources\.DS_Store</Link>
-    </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Alarm.png">
+    <BundleResource Include="..\DataUtils\Resources\Alarm.png">
       <Link>Resources\Alarm.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Check.png">
+    <BundleResource Include="..\DataUtils\Resources\Check.png">
       <Link>Resources\Check.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Counter.png">
+    <BundleResource Include="..\DataUtils\Resources\Counter.png">
       <Link>Resources\Counter.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Flash.png">
+    <BundleResource Include="..\DataUtils\Resources\Flash.png">
       <Link>Resources\Flash.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Freezer.png">
+    <BundleResource Include="..\DataUtils\Resources\Freezer.png">
       <Link>Resources\Freezer.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Home.png">
+    <BundleResource Include="..\DataUtils\Resources\Home.png">
       <Link>Resources\Home.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Pause.png">
+    <BundleResource Include="..\DataUtils\Resources\Pause.png">
       <Link>Resources\Pause.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Refrigerator.png">
+    <BundleResource Include="..\DataUtils\Resources\Refrigerator.png">
       <Link>Resources\Refrigerator.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Thermometer.png">
+    <BundleResource Include="..\DataUtils\Resources\Thermometer.png">
       <Link>Resources\Thermometer.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Waterdrop.png">
+    <BundleResource Include="..\DataUtils\Resources\Waterdrop.png">
       <Link>Resources\Waterdrop.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon.png">
       <Link>Resources\Icons\GearIcon.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon1024.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon1024.png">
       <Link>Resources\Icons\GearIcon1024.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon120.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon120.png">
       <Link>Resources\Icons\GearIcon120.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon152.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon152.png">
       <Link>Resources\Icons\GearIcon152.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon167.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon167.png">
       <Link>Resources\Icons\GearIcon167.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon180.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon180.png">
       <Link>Resources\Icons\GearIcon180.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon20.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon20.png">
       <Link>Resources\Icons\GearIcon20.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon29.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon29.png">
       <Link>Resources\Icons\GearIcon29.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon40.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon40.png">
       <Link>Resources\Icons\GearIcon40.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon58.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon58.png">
       <Link>Resources\Icons\GearIcon58.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon60.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon60.png">
       <Link>Resources\Icons\GearIcon60.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon76.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon76.png">
       <Link>Resources\Icons\GearIcon76.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon80.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon80.png">
       <Link>Resources\Icons\GearIcon80.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIcon87.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIcon87.png">
       <Link>Resources\Icons\GearIcon87.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Icons\GearIconAlfa.png">
+    <BundleResource Include="..\DataUtils\Resources\Icons\GearIconAlfa.png">
       <Link>Resources\Icons\GearIconAlfa.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Mixer.png">
+    <BundleResource Include="..\DataUtils\Resources\Mixer.png">
       <Link>Resources\Mixer.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Rotate.png">
+    <BundleResource Include="..\DataUtils\Resources\Rotate.png">
       <Link>Resources\Rotate.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Sifter.png">
+    <BundleResource Include="..\DataUtils\Resources\Sifter.png">
       <Link>Resources\Sifter.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Vibro.png">
+    <BundleResource Include="..\DataUtils\Resources\Vibro.png">
       <Link>Resources\Vibro.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Oven.png">
+    <BundleResource Include="..\DataUtils\Resources\Oven.png">
       <Link>Resources\Oven.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\ProofingChamber.png">
+    <BundleResource Include="..\DataUtils\Resources\ProofingChamber.png">
       <Link>Resources\ProofingChamber.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Trash.png">
+    <BundleResource Include="..\DataUtils\Resources\Trash.png">
       <Link>Resources\Trash.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\CheckOrange.png">
+    <BundleResource Include="..\DataUtils\Resources\CheckOrange.png">
       <Link>Resources\CheckOrange.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Cross.png">
+    <BundleResource Include="..\DataUtils\Resources\Cross.png">
       <Link>Resources\Cross.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Lock.png">
+    <BundleResource Include="..\DataUtils\Resources\Lock.png">
       <Link>Resources\Lock.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Service.png">
+    <BundleResource Include="..\DataUtils\Resources\Service.png">
       <Link>Resources\Service.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\SandWatch.png">
+    <BundleResource Include="..\DataUtils\Resources\SandWatch.png">
       <Link>Resources\SandWatch.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\GreenCircle.png">
+    <BundleResource Include="..\DataUtils\Resources\GreenCircle.png">
       <Link>Resources\GreenCircle.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\GreyCircle.png">
+    <BundleResource Include="..\DataUtils\Resources\GreyCircle.png">
       <Link>Resources\GreyCircle.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\RedCircle.png">
+    <BundleResource Include="..\DataUtils\Resources\RedCircle.png">
       <Link>Resources\RedCircle.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\YelowCircle.png">
+    <BundleResource Include="..\DataUtils\Resources\YelowCircle.png">
       <Link>Resources\YelowCircle.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\AlertGear.png">
+    <BundleResource Include="..\DataUtils\Resources\AlertGear.png">
       <Link>Resources\AlertGear.png</Link>
     </BundleResource>
-    <BundleResource Include="..\..\DataUtils\DataUtils\Resources\Cam.png">
+    <BundleResource Include="..\DataUtils\Resources\Cam.png">
       <Link>Resources\Cam.png</Link>
     </BundleResource>
   </ItemGroup>
-  <Import Project="..\..\DataUtils\DataUtils\DataUtils.projitems" Label="Shared" Condition="Exists('..\..\DataUtils\DataUtils\DataUtils.projitems')" />
+  <Import Project="..\DataUtils\DataUtils.projitems" Label="Shared" Condition="Exists('..\DataUtils\DataUtils.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
